@@ -25,9 +25,7 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgWrapper}>
-        <Link to={`/movie/${movie.id}`}>
-          <img src={posterUrl} alt={movie.title} className={styles.img} />
-        </Link>
+        <img src={posterUrl} alt={movie.title} className={styles.img} />
 
         <button className={styles.favoriteBtn} onClick={toggleFavorite}>
           <svg width={24} height={24}>
@@ -43,9 +41,7 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
       </div>
 
       <div className={styles.textWrapper}>
-        <Link to={`/movie/${movie.id}`} className={styles.name}>
-          {movie.title}
-        </Link>
+        <div className={styles.name}>{movie.title}</div>
 
         <ul className={styles.details}>
           <li className={styles.year}>
