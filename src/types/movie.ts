@@ -1,9 +1,11 @@
 export interface Movie {
   id: number;
   title: string;
-  poster_path: string;
+  poster_path: string | null;
   overview: string;
   genre_ids: number[];
+  release_date?: string;
+  vote_average?: number;
 }
 
 export interface Genre {
@@ -18,8 +20,7 @@ export interface MovieDetails extends Movie {
 }
 
 export interface MoviesResponse {
-  page: number;
   results: Movie[];
+  page: number;
   total_pages: number;
-  total_results: number;
 }

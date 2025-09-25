@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { MovieDetails } from "../types/movie";
+import type { MovieDetails } from "../../types/movie";
 
 interface FavoritesState {
   favorites: MovieDetails[];
