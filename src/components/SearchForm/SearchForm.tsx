@@ -1,13 +1,9 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./SearchForm.module.css";
-
-const schema = z.object({
-  query: z.string().min(1, "Enter a search query"),
-});
-
-type FormValues = z.infer<typeof schema>;
+import { searchSchema, type SearchFormValues } from "../../shema/validation";
+import { FormButton } from "../FormButton/FormButton";
+import { TextInput } from "../TextInput/TextInput";
 
 interface SearchFormProps {
   onSearch: (query: string) => void;
@@ -19,11 +15,11 @@ export const SearchForm = ({ onSearch }: SearchFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({
-    resolver: zodResolver(schema),
+  } = useForm<SearchFormValues>({
+    resolver: zodResolver(searchSchema),
   });
 
-  const onSubmit = (data: FormValues) => onSearch(data.query);
+  const onSubmit = (data: SearchFormValues) => onSearch(data.query);
 
   const handleReset = () => {
     reset({ query: "" });
@@ -32,18 +28,12 @@ export const SearchForm = ({ onSearch }: SearchFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <input
-        {...register("query")}
-        placeholder="Search movies..."
-        className={styles.input}
-      />
+      <TextInput placeholder="Search movies..." register={register("query")} />
       <div className={styles.buttons}>
-        <button type="submit" className={styles.button}>
-          Search
-        </button>
-        <button type="button" className={styles.button} onClick={handleReset}>
+        <FormButton type="submit">Search</FormButton>
+        <FormButton type="button" onClick={handleReset}>
           Reset
-        </button>
+        </FormButton>
       </div>
       {errors.query && <p className={styles.error}>{errors.query.message}</p>}
     </form>

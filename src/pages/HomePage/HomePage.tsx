@@ -4,10 +4,10 @@ import { fetchPopularMovies, fetchGenres, searchMovies } from "../../api/tmdb";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { MovieList } from "../../components/MovieList/MovieList";
 import { Pagination } from "../../components/Pagination/Pagination";
+import { usePagination } from "../../hooks/usePagination";
 
 export const HomePage = () => {
   const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
 
   const { data: genresMap = {} } = useQuery({
     queryKey: ["genres"],
@@ -15,18 +15,14 @@ export const HomePage = () => {
   });
 
   const { data: movies = [], isLoading } = useQuery({
-    queryKey: ["movies", query, page],
+    queryKey: ["movies", query],
     queryFn: () =>
       query ? searchMovies(query, page) : fetchPopularMovies(page),
   });
 
-  const handlePrev = () => {
-    if (page > 1) setPage((p) => p - 1);
-  };
-
-  const handleNext = () => {
-    if (movies.length > 0) setPage((p) => p + 1);
-  };
+  const { page, setPage, hasPrev, hasNext, prev, next } = usePagination(
+    movies.length
+  );
 
   return (
     <div>
@@ -40,10 +36,10 @@ export const HomePage = () => {
       <MovieList movies={movies.slice(0, 18)} genresMap={genresMap} />
       <Pagination
         page={page}
-        hasPrev={page > 1}
-        hasNext={true}
-        onPrev={handlePrev}
-        onNext={handleNext}
+        hasPrev={hasPrev}
+        hasNext={hasNext}
+        onPrev={prev}
+        onNext={next}
       />
     </div>
   );
