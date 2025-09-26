@@ -1,18 +1,13 @@
 import { useState } from "react";
 
-export const usePagination = (itemsLength: number) => {
-  const [page, setPage] = useState(1);
+export const usePagination = (initialPage = 1) => {
+  const [page, setPage] = useState(initialPage);
+
+  const prev = () => setPage((p) => Math.max(p - 1, 1));
+  const next = () => setPage((p) => p + 1);
 
   const hasPrev = page > 1;
-  const hasNext = itemsLength > 0;
+  const hasNext = true;
 
-  const prev = () => {
-    if (hasPrev) setPage((p) => p - 1);
-  };
-
-  const next = () => {
-    if (hasNext) setPage((p) => p + 1);
-  };
-
-  return { page, setPage, hasPrev, hasNext, prev, next };
+  return { page, setPage, prev, next, hasPrev, hasNext };
 };

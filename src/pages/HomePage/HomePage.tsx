@@ -8,6 +8,7 @@ import { usePagination } from "../../hooks/usePagination";
 
 export const HomePage = () => {
   const [query, setQuery] = useState("");
+  const { page, setPage, hasPrev, hasNext, prev, next } = usePagination(1);
 
   const { data: genresMap = {} } = useQuery({
     queryKey: ["genres"],
@@ -15,23 +16,19 @@ export const HomePage = () => {
   });
 
   const { data: movies = [], isLoading } = useQuery({
-    queryKey: ["movies", query],
+    queryKey: ["movies", query, page],
     queryFn: () =>
       query ? searchMovies(query, page) : fetchPopularMovies(page),
   });
 
-  const { page, setPage, hasPrev, hasNext, prev, next } = usePagination(
-    movies.length
-  );
+  const handleSearch = (q: string) => {
+    setQuery(q);
+    setPage(1);
+  };
 
   return (
     <div>
-      <SearchForm
-        onSearch={(q) => {
-          setQuery(q);
-          setPage(1);
-        }}
-      />
+      <SearchForm onSearch={handleSearch} />
       {isLoading && <p>Loading...</p>}
       <MovieList movies={movies.slice(0, 18)} genresMap={genresMap} />
       <Pagination
