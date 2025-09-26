@@ -1,10 +1,5 @@
 import styles from "../SearchForm/SearchForm.module.css";
-
-interface FormButtonProps {
-  type?: "button" | "submit";
-  onClick?: () => void;
-  children: React.ReactNode;
-}
+import type { FormButtonProps } from "../../types/ui";
 
 export const FormButton = ({
   type = "button",

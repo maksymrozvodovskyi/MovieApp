@@ -1,4 +1,3 @@
-import type { Movie, Genre } from "../../types/movie";
 import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./MovieDetails.module.css";
 import { getPosterUrl } from "../../utils/getPosterUrl";
@@ -6,10 +5,7 @@ import { getGenresDetails } from "../../utils/getGenresDetails";
 import { FavoriteBtn } from "../FavoriteBtn/FavoriteBtn";
 import { getYear } from "../../utils/getYear";
 import { getRating } from "../../utils/getRating";
-
-interface MovieDetailsProps {
-  movie: Movie & { genres: Genre[] };
-}
+import type { MovieDetailsProps } from "../../types/components";
 
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();

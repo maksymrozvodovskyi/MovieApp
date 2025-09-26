@@ -1,4 +1,3 @@
-import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./MovieCard.module.css";
@@ -7,11 +6,7 @@ import { getGenres } from "../../utils/getGenres";
 import { FavoriteBtn } from "../FavoriteBtn/FavoriteBtn";
 import { getYear } from "../../utils/getYear";
 import { getRating } from "../../utils/getRating";
-
-interface MovieCardProps {
-  movie: Movie;
-  genresMap: Record<number, string>;
-}
+import type { MovieCardProps } from "../../types/components";
 
 export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();

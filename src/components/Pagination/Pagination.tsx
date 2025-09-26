@@ -1,12 +1,5 @@
 import styles from "./Pagination.module.css";
-
-interface PaginationProps {
-  page: number;
-  hasPrev: boolean;
-  hasNext: boolean;
-  onPrev: () => void;
-  onNext: () => void;
-}
+import type { PaginationProps } from "../../types/components";
 
 export const Pagination = ({
   page,

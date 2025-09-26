@@ -4,10 +4,7 @@ import styles from "./SearchForm.module.css";
 import { searchSchema, type SearchFormValues } from "../../shema/validation";
 import { FormButton } from "../FormButton/FormButton";
 import { TextInput } from "../TextInput/TextInput";
-
-interface SearchFormProps {
-  onSearch: (query: string) => void;
-}
+import type { SearchFormProps } from "../../types/forms";
 
 export const SearchForm = ({ onSearch }: SearchFormProps) => {
   const {

@@ -1,9 +1,5 @@
 import styles from "../MovieCard/MovieCard.module.css";
-
-interface FavoriteBtnProps {
-  isFav: boolean;
-  onClick: () => void;
-}
+import type { FavoriteBtnProps } from "../../types/ui";
 
 export const FavoriteBtn = ({ isFav, onClick }: FavoriteBtnProps) => (
   <button className={styles.favoriteBtn} onClick={onClick}>

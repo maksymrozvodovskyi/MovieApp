@@ -1,10 +1,5 @@
-import type { Movie } from "../../types/movie";
 import { MovieList } from "../MovieList/MovieList";
-
-interface RecommendationsProps {
-  movies: Movie[];
-  genresMap: Record<number, string>;
-}
+import type { RecommendationsProps } from "../../types/components";
 
 export const Recommendations = ({
   movies,

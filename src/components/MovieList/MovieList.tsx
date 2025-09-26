@@ -1,11 +1,6 @@
-import type { Movie } from "../../types/movie";
 import { MovieCard } from "../MovieCard/MovieCard";
 import styles from "./MovieList.module.css";
-
-interface MovieListProps {
-  movies: Movie[];
-  genresMap: Record<number, string>;
-}
+import type { MovieListProps } from "../../types/components";
 
 export const MovieList = ({ movies, genresMap }: MovieListProps) => {
   if (!movies.length)
