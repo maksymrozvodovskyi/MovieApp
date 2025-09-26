@@ -5,6 +5,8 @@ import styles from "./MovieCard.module.css";
 import { getPosterUrl } from "../../utils/getPosterUrl";
 import { getGenres } from "../../utils/getGenres";
 import { FavoriteBtn } from "../FavoriteBtn/FavoriteBtn";
+import { getYear } from "../../utils/getYear";
+import { getRating } from "../../utils/getRating";
 
 interface MovieCardProps {
   movie: Movie;
@@ -29,20 +31,13 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
         />
         <FavoriteBtn isFav={isFavorite(movie.id)} onClick={toggleFavorite} />
       </div>
-
       <div className={styles.textWrapper}>
         <div className={styles.name}>{movie.title}</div>
-
         <ul className={styles.details}>
-          <li className={styles.year}>
-            {movie.release_date?.slice(0, 4) || "—"}
-          </li>
-          <li className={styles.rating}>
-            ⭐ {movie.vote_average?.toFixed(1) || "—"}
-          </li>
+          <li className={styles.year}>{getYear(movie.release_date)}</li>
+          <li className={styles.rating}>{getRating(movie.vote_average)}</li>
           <li>{getGenres(movie.genre_ids, genresMap)}</li>
         </ul>
-
         <Link to={`/movie/${movie.id}`} className={styles.learnMoreBtn}>
           Learn More
         </Link>
