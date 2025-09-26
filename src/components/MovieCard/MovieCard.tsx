@@ -2,6 +2,9 @@ import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./MovieCard.module.css";
+import { getPosterUrl } from "../../utils/getPosterUrl";
+import { getGenres } from "../../utils/getGenres";
+import { FavoriteBtn } from "../FavoriteBtn/FavoriteBtn";
 
 interface MovieCardProps {
   movie: Movie;
@@ -16,28 +19,15 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
     else addFavorite(movie);
   };
 
-  const posterUrl = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "https://via.placeholder.com/276x368?text=No+Image";
-
-  const genres = movie.genre_ids?.map((id) => genresMap[id]).join(", ") || "—";
-
   return (
     <div className={styles.card}>
       <div className={styles.imgWrapper}>
-        <img src={posterUrl} alt={movie.title} className={styles.img} />
-
-        <button className={styles.favoriteBtn} onClick={toggleFavorite}>
-          <svg width={24} height={24}>
-            <use
-              href={
-                isFavorite(movie.id)
-                  ? "/src/assets/icons.svg#icon-heart-fill"
-                  : "/src/assets/icons.svg#icon-heart-nofill"
-              }
-            />
-          </svg>
-        </button>
+        <img
+          src={getPosterUrl(movie.poster_path)}
+          alt={movie.title}
+          className={styles.img}
+        />
+        <FavoriteBtn isFav={isFavorite(movie.id)} onClick={toggleFavorite} />
       </div>
 
       <div className={styles.textWrapper}>
@@ -50,7 +40,7 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
           <li className={styles.rating}>
             ⭐ {movie.vote_average?.toFixed(1) || "—"}
           </li>
-          <li>{genres}</li>
+          <li>{getGenres(movie.genre_ids, genresMap)}</li>
         </ul>
 
         <Link to={`/movie/${movie.id}`} className={styles.learnMoreBtn}>
