@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    padding: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.title {
+    font-size: 8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.message {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.homeButton {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #1c1c1c;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.homeButton:hover {
+    background-color: #1db954;
+}
