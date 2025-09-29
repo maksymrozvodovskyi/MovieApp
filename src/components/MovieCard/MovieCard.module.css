@@ -6,11 +6,13 @@
     color: #fff;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .imgWrapper {
     width: 100%;
     height: 360px;
+    position: relative;
     overflow: hidden;
 }
 
@@ -21,10 +23,16 @@
 }
 
 .textWrapper {
-    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    /* відстань між елементами всередині блоку */
+    padding: 14px;
+    /* однакові відступи від країв */
+    flex: 1;
+    /* дозволяє кнопці залишатися внизу */
+    min-height: 160px;
+    /* фіксує висоту текстового блоку для всіх карток */
 }
 
 .name {
@@ -36,20 +44,42 @@
 
 .details {
     display: flex;
-    justify-content: space-between;
-    font-size: 12px;
+    flex-direction: column;
+    gap: 20px;
+    /* відстань між жанрами і роком/рейтином */
+    font-size: 13px;
     color: #b3b3b3;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.actionsWrapper {
+.details li:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.yearRating {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    margin-top: 12px;
+}
+
+.year {
+    color: #b3b3b3;
+    font-size: 13px;
+}
+
+.rating {
+    font-weight: 600;
+    color: #f5c518;
+    font-size: 13px;
 }
 
 .learnMoreBtn {
-    flex: 1;
+    margin-top: auto;
+    /* завжди прижата до низу блоку */
     background-color: #1db954;
     padding: 10px;
     border-radius: 6px;
@@ -57,27 +87,39 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .learnMoreBtn:hover {
     background-color: #17a44b;
+    transform: translateY(-2px);
 }
 
 .favoriteBtn {
-    background: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 6px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
+    transition: background 0.2s ease;
+}
+
+.favoriteBtn:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .favoriteBtn svg {
+    width: 20px;
+    height: 20px;
     fill: #f2f4f7;
     transition: fill 0.3s ease;
 }
 
 .favoriteBtn:hover svg {
-    fill: #3470ff;
+    fill: #1db954;
 }

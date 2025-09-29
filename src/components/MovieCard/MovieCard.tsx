@@ -29,9 +29,13 @@ export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
       <div className={styles.textWrapper}>
         <div className={styles.name}>{movie.title}</div>
         <ul className={styles.details}>
-          <li className={styles.year}>{getYear(movie.release_date)}</li>
-          <li className={styles.rating}>{getRating(movie.vote_average)}</li>
           <li>{getGenres(movie.genre_ids, genresMap)}</li>
+          <li className={styles.yearRating}>
+            <span className={styles.year}>{getYear(movie.release_date)}</span>
+            <span className={styles.rating}>
+              {getRating(movie.vote_average)}
+            </span>
+          </li>
         </ul>
         <Link to={`/movie/${movie.id}`} className={styles.learnMoreBtn}>
           Learn More
