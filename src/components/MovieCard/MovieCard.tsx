@@ -8,14 +8,20 @@ import { getRating } from "../../utils/getRating";
 import type { MovieCardProps } from "../../types/components";
 import styles from "./MovieCard.module.css";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const MovieCard = ({ movie }: Omit<MovieCardProps, "genresMap">) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
   const genresMap = useGenres();
 
   const toggleFavorite = () => {
-    if (isFavorite(movie.id)) removeFavorite(movie.id);
-    else addFavorite(movie);
+    if (isFavorite(movie.id)) {
+      removeFavorite(movie.id);
+      toast.success(`${movie.title} removed from favorites`);
+    } else {
+      addFavorite(movie);
+      toast.success(`${movie.title} added to favorites`);
+    }
   };
 
   return (
