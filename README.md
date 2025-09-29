@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+Movie Explorer is a web application for browsing and managing movies. Users can:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View a list of movies with posters, genres, and release year.
+- Add movies to favorites and remove them.
+- Search and filter movies by title.
 
-## React Compiler
+Favorite movies are stored in local storage, allowing them to persist between sessions. The application is fully responsive and works well on both desktop and mobile devices.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project uses React for building the user interface, React Router for client-side routing, CSS Modules for component-level styling, and modern JavaScript (ES6+) for logic and data handling. Custom hooks are used to manage state and local storage.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies Used
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React** – for building the user interface
+- **React Router** – for client-side routing
+- **CSS Modules** – for scoped component styling
+- **JavaScript (ES6+)** – for application logic
+- **Custom Hooks** – for state management and local storage handling
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Getting Started
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install dependencies using `npm install`, then run the development server with `npm start`. The application will open in your browser at [http://localhost:3000](http://localhost:3000). To build the project for production, use `npm run build`; this will create a `build` folder containing a production-ready version of the app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Usage
+
+Browse movies on the home page. Click the **Favorite** button to add a movie to your favorites list or remove it. Use the search bar to find movies by title. Favorites are stored in local storage and persist across sessions.
+
+---
+
+## Project Structure
+
+/src
+/components - Reusable components (MovieCard, MovieList, FavoriteBtn)
+/hooks - Custom hooks (useFavorites, useMovies)
+/utils - Utility functions (getPosterUrl, getGenres, getYear)
+/pages - Page components (Home, Favorites)
+App.js - Main application component
+index.js - Entry point
+
+---
+
+## Contact
+
+For questions or suggestions, contact: <rozvodovskyim@gmail.com>
