@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import type { ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchGenres } from "../api/tmdb";
@@ -17,3 +17,5 @@ export const GenreProvider = ({ children }: { children: ReactNode }) => {
     <GenreContext.Provider value={genresMap}>{children}</GenreContext.Provider>
   );
 };
+
+export const useGenres = () => useContext(GenreContext);

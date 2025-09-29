@@ -1,9 +1,18 @@
 import { useFavorites } from "../../hooks/useFavorites";
 import { MovieCard } from "../../components/MovieCard/MovieCard";
 import styles from "./FavoritePage.module.css";
+import { Loader } from "../../components/Loader/Loader";
+import { useEffect, useState } from "react";
 
 export const Favorites = () => {
   const { favorites } = useFavorites();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 300);
+  }, []);
+
+  if (loading) return <Loader />;
 
   return (
     <div className={styles.favoritesPage}>
