@@ -2,42 +2,22 @@
 
 ## Project Overview
 
-Movie Explorer is a web application for browsing and managing movies. Users can:
+Movie Explorer is a React-based web application that allows users to explore and search for movies. It uses TheMovieDB API to fetch real-time movie data, such as titles, posters, genres, and release years. Users can browse popular movies, search by title, view movie details, and manage a list of favorite movies.
 
-- View a list of movies with posters, genres, and release year.
-- Add movies to favorites and remove them.
-- Search and filter movies by title.
+Favorite movies are stored in local storage, so they persist between sessions. The application is fully responsive and works well on desktops, tablets, and mobile devices.
 
-Favorite movies are stored in local storage, allowing them to persist between sessions. The application is fully responsive and works well on both desktop and mobile devices.
+## Features
 
-The project uses React for building the user interface, React Router for client-side routing, CSS Modules for component-level styling, and modern JavaScript (ES6+) for logic and data handling. Custom hooks are used to manage state and local storage.
+- Browse popular and trending movies.
+- Search for movies by title.
+- View detailed movie information (release date, genres, rating, overview).
+- Add and remove movies from your favorites list.
+- Responsive design for all devices.
 
----
+## Live Demo
 
-## Technologies Used
-
-- **React** – for building the user interface
-- **React Router** – for client-side routing
-- **CSS Modules** – for scoped component styling
-- **JavaScript (ES6+)** – for application logic
-- **Custom Hooks** – for state management and local storage handling
-
----
-
-## Getting Started
-
-Install dependencies using `npm install`, then run the development server with `npm start`.
-The application will open in your browser at [http://localhost:3000](http://localhost:3000).
-To build the project for production, use `npm run build`, this will create a `build` folder containing a production-ready version of the app.
-
----
-
-## Usage
-
-Browse movies on the home page. Click the **Favorite** button to add a movie to your favorites list or remove it.
-Use the search bar to find movies by title. Favorites are stored in local storage and persist across sessions.
-
----
+You can view the live application here:  
+[https://movie-jut0e7t7h-komorys-projects.vercel.app/](https://movie-jut0e7t7h-komorys-projects.vercel.app/)
 
 ## Project Structure
 
@@ -49,7 +29,17 @@ Use the search bar to find movies by title. Favorites are stored in local storag
 - App.js - Main application component
 - index.js - Entry point
 
----
+## Technologies Used
+
+- React.js
+- React Router
+- CSS Modules
+- JavaScript (ES6+)
+- Custom Hooks
+
+## License
+
+This project is licensed under the MIT License.
 
 ## Contact
 
