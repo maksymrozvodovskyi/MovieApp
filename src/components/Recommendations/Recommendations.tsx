@@ -1,5 +1,6 @@
 import { MovieList } from "../MovieList/MovieList";
 import type { RecommendationsProps } from "../../types/components";
+import styles from "./Recommendations.module.css";
 
 export const Recommendations = ({
   movies,
@@ -8,9 +9,11 @@ export const Recommendations = ({
   if (!movies.length) return null;
 
   return (
-    <div>
-      <h2>Recommended Movies</h2>
-      <MovieList movies={movies} genresMap={genresMap} />
+    <div className={styles.recommendations}>
+      <h2 className={styles.title}>Recommended Movies</h2>
+      <div className={styles.moviesGrid}>
+        <MovieList movies={movies} genresMap={genresMap} />
+      </div>
     </div>
   );
 };

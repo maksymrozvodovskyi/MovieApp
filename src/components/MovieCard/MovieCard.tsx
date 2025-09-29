@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
-import styles from "./MovieCard.module.css";
+import { useGenres } from "../../context/genreContext";
 import { getPosterUrl } from "../../utils/getPosterUrl";
 import { getGenres } from "../../utils/getGenres";
 import { FavoriteBtn } from "../FavoriteBtn/FavoriteBtn";
 import { getYear } from "../../utils/getYear";
 import { getRating } from "../../utils/getRating";
 import type { MovieCardProps } from "../../types/components";
+import styles from "./MovieCard.module.css";
+import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, genresMap }: MovieCardProps) => {
+export const MovieCard = ({ movie }: Omit<MovieCardProps, "genresMap">) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+  const genresMap = useGenres();
 
   const toggleFavorite = () => {
     if (isFavorite(movie.id)) removeFavorite(movie.id);
