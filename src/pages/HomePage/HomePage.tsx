@@ -5,6 +5,7 @@ import { SearchForm } from "../../components/SearchForm/SearchForm";
 import { MovieList } from "../../components/MovieList/MovieList";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { usePagination } from "../../hooks/usePagination";
+import css from "./HomePage.module.css";
 
 export const HomePage = () => {
   const [query, setQuery] = useState("");
@@ -27,7 +28,7 @@ export const HomePage = () => {
   };
 
   return (
-    <div>
+    <section className={css.section}>
       <SearchForm onSearch={handleSearch} />
       {isLoading && <p>Loading...</p>}
       <MovieList movies={movies.slice(0, 18)} genresMap={genresMap} />
@@ -38,6 +39,6 @@ export const HomePage = () => {
         onPrev={prev}
         onNext={next}
       />
-    </div>
+    </section>
   );
 };
