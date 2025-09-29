@@ -26,13 +26,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    /* відстань між елементами всередині блоку */
     padding: 14px;
-    /* однакові відступи від країв */
     flex: 1;
-    /* дозволяє кнопці залишатися внизу */
     min-height: 160px;
-    /* фіксує висоту текстового блоку для всіх карток */
 }
 
 .name {
@@ -46,7 +42,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* відстань між жанрами і роком/рейтином */
     font-size: 13px;
     color: #b3b3b3;
     list-style: none;
@@ -79,7 +74,6 @@
 
 .learnMoreBtn {
     margin-top: auto;
-    /* завжди прижата до низу блоку */
     background-color: #1db954;
     padding: 10px;
     border-radius: 6px;
